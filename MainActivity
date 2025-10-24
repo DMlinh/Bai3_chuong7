@@ -1,0 +1,35 @@
+package com.example.bai3;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btnSendArray;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnSendArray = findViewById(R.id.btnSendArray);
+
+        btnSendArray.setOnClickListener(v -> {
+            // Dữ liệu cần gửi
+            String[] courses = {
+                    "Lập Trình Android Cơ Bản",
+                    "Lập Trình Android Nâng Cao",
+                    "Lập Trình C#",
+                    "Quảng Cáo Facebook",
+                    "Quảng Cáo Google Adword"
+            };
+
+            // Gửi dữ liệu qua Intent
+            Intent intent = new Intent(MainActivity.this, GetStringArrayActivity.class);
+            intent.putExtra("courses", courses);
+            startActivity(intent);
+        });
+    }
+}
